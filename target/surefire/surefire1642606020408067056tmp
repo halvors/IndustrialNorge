@@ -1,0 +1,5 @@
+#surefire
+#Wed Aug 31 15:19:27 CEST 2011
+user.dir=/home/halvors/Prosjekter/Bukkit/plugins/halvors
+localRepository=/home/halvors/.m2/repository
+basedir=/home/halvors/Prosjekter/Bukkit/plugins/halvors

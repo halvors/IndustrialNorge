@@ -1,0 +1,44 @@
+name: halvors
+main: org.halvors.halvors.halvors
+version: 0.0.1
+description: 
+author: halvors
+website: halvors.org
+
+commands:
+    help:
+        aliases: [hjelp]
+        description:
+        usage: 
+
+    stuck:
+        aliases: [s]
+        description:
+        usage:
+
+    time:
+        aliases: [tid]
+        description:
+        usage:
+
+    tkick:
+        aliases:
+        description:
+        usage:
+        
+permissions:
+    halvors.users.*:
+        default: op
+        description: 
+        children: 
+            halvors.help: true
+            halvors.stuck: true
+            halvors.tid: true
+    halvors.users.help:
+        description:
+    halvors.users.stuck:
+        description:
+    halvors.users.time:
+        description:
+    halvors.users.kick:
+        description:
