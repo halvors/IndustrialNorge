@@ -39,10 +39,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	public void onPlayerChat(PlayerChatEvent event) {
 		Player player = event.getPlayer();
 		
-		// Update player's displayname.
-		PlayerUtils.setDisplayName(player);
-					
-		event.setFormat(player.getDisplayName() + ": " + ChatColor.WHITE + event.getMessage());
+		event.setFormat(player.getDisplayName() + ": " + event.getMessage());
 	}
 	
 	@Override

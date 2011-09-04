@@ -1,19 +1,24 @@
 package org.halvors.halvors.listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.halvors.halvors.halvors;
+import org.halvors.halvors.database.BlockManager;
 import org.halvors.halvors.util.RepairUtils;
 
 public class BlockListener extends org.bukkit.event.block.BlockListener {
 //	private final halvors plugin;
+	private final BlockManager blockManager;
 	
 	public BlockListener(halvors plugin) {
 //		this.plugin = plugin;
+		this.blockManager = plugin.getBlockManager();
 	}
 
 	@Override
@@ -23,6 +28,14 @@ public class BlockListener extends org.bukkit.event.block.BlockListener {
 			Material type = block.getType();
 			Player player = event.getPlayer();
 			World world = block.getWorld();
+			
+			if (blockManager.ownBlock(block, player)) {
+				blockManager.removeBlock(block);
+			} else {
+				Player owner = blockManager.getBlockOwner(block);
+				
+				player.sendMessage(ChatColor.RED + "Denne blokken eies av " + owner.getDisplayName() + ".");
+			}
 			
 			// Infinite tools and armor.
 			RepairUtils.repair(player.getItemInHand(), player);
@@ -37,5 +50,16 @@ public class BlockListener extends org.bukkit.event.block.BlockListener {
 				event.setCancelled(true);
 			}
 		}	
+	}
+	
+	public void onBlockPlace(BlockPlaceEvent event) {
+		if (!event.isCancelled()) {
+			Player player = event.getPlayer();
+			Block block = event.getBlock();
+			
+			if (!blockManager.addBlock(block, player)) {
+				event.setCancelled(true);
+			}
+		}
 	}
 }

@@ -4,6 +4,7 @@ version: 0.0.1
 description: 
 author: halvors
 website: halvors.org
+database: true
 
 commands:
     help:
@@ -27,18 +28,35 @@ commands:
         usage:
         
 permissions:
-    halvors.users.*:
+    halvors.*:
         default: op
         description: 
         children: 
-            halvors.help: true
-            halvors.stuck: true
-            halvors.tid: true
+            halvors.users.*: true
+            halvors.admin.*: true
+        
+    halvors.users.*:
+        description:
+        children:
+            halvors.users.help: true
+            halvors.users.stuck: true
+            halvors.users.tid: true
+    
     halvors.users.help:
         description:
     halvors.users.stuck:
         description:
     halvors.users.time:
         description:
-    halvors.users.kick:
+        
+    halvors.admin.*:
+        description:
+        children:
+            halvors.admin.kick: true
+            halvors.admin.ban: true
+            
+    halvors.admin.kick:
+        description:
+        
+    halvors.admin.ban:
         description:

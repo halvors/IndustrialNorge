@@ -25,15 +25,22 @@ public class StuckCommand implements CommandExecutor {
 			
 			if (player.hasPermission("halvors.users.stuck")) {
 				Location pos = player.getLocation();
+				Environment env = world.getEnvironment();
+				Location newPos = null;
 				
-				if (world.getEnvironment().equals(Environment.NORMAL)) {
-					int y = world.getHighestBlockYAt(pos.getBlockX(), pos.getBlockZ());
+				switch (env) {
+				case NORMAL:
+					newPos = new Location(world, pos.getX(), world.getHighestBlockYAt(pos.getBlockX(), pos.getBlockZ()), pos.getZ());
+					break;
+				default:
+					sender.sendMessage(ChatColor.RED + "Denne kommandoen er ikke tilgjengelig i denne verden.");
+					break;
+				}
 				
-					player.teleport(new Location(world, pos.getX(), y + 1, pos.getZ()));
+				if (world != null && newPos != null) {
+					player.teleport(newPos);
 				
 					return true;
-				} else {
-					sender.sendMessage(ChatColor.RED + "Denne kommandoen er ikke tilgjengelig i denne verden.");
 				}
 			}
 		}

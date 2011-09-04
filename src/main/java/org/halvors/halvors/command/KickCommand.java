@@ -1,5 +1,6 @@
 package org.halvors.halvors.command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,19 +18,17 @@ public class KickCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
-		if (sender instanceof Player) {
-			Player player = (Player) sender;
-			
-			if (sender.hasPermission("halvors.users.kick")) {
-				if (args.length == 2) {
-					Player kickPlayer = PlayerUtils.getPlayer(args[1]);
-					kickPlayer.kickPlayer(kickPlayer.getName());
-					player.getWorld().strikeLightningEffect(kickPlayer.getLocation());
+		if (sender.hasPermission("halvors.admin.kick")) {
+			if (args.length > 1) {
+				Player kickPlayer = PlayerUtils.getPlayer(args[1]);
+				String senderName = sender instanceof Player ? ((Player)sender).getDisplayName() : ChatColor.GOLD + "Console";
+				String kickReason = args.length > 1 ? args[3] : "The banhammar has spoken!";
 				
-					sender.sendMessage(ChatColor.GREEN + "Player " + ChatColor.YELLOW + kickPlayer.getDisplayName() + ChatColor.GREEN + " ble kicket av " + ChatColor.YELLOW + player.getDisplayName());
-				
-					return true;
-				}
+				Bukkit.getServer().broadcastMessage(ChatColor.YELLOW + kickPlayer.getDisplayName() + ChatColor.GREEN + " ble kicket for " + kickReason + " av " + senderName);
+				kickPlayer.kickPlayer(kickReason);
+				kickPlayer.getWorld().strikeLightningEffect(kickPlayer.getLocation());
+					
+				return true;
 			}
 		}
 		
