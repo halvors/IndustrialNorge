@@ -21,12 +21,8 @@
 
 package org.halvors.halvors;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.persistence.PersistenceException;
 
 import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -37,8 +33,6 @@ import org.halvors.halvors.command.HelpCommand;
 import org.halvors.halvors.command.KickCommand;
 import org.halvors.halvors.command.StuckCommand;
 import org.halvors.halvors.command.TimeCommand;
-import org.halvors.halvors.database.BlockManager;
-import org.halvors.halvors.database.BlockTable;
 import org.halvors.halvors.listener.BlockListener;
 import org.halvors.halvors.listener.EntityListener;
 import org.halvors.halvors.listener.PlayerListener;
@@ -51,7 +45,6 @@ public class halvors extends JavaPlugin {
     private PluginDescriptionFile desc;
     
     private final ConfigurationManager configManager;
-    private final BlockManager blockManager;
     
     private final BlockListener blockListener;
     private final EntityListener entityListener;
@@ -63,7 +56,6 @@ public class halvors extends JavaPlugin {
     	halvors.instance = this;
         
         this.configManager = new ConfigurationManager(this);
-        this.blockManager = new BlockManager(this);
         
         this.blockListener = new BlockListener(this);
         this.entityListener = new EntityListener(this);
@@ -78,12 +70,8 @@ public class halvors extends JavaPlugin {
         // Load configuration.
         configManager.load();
         
-        // Setup database.
-        setupDatabase();
-        
         // Register our events.
         pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Event.Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_PLACE, blockListener, Event.Priority.Normal, this);
         
         pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
         
@@ -110,26 +98,6 @@ public class halvors extends JavaPlugin {
         configManager.unload();
         
         log(Level.INFO, "version " + getVersion() + " is disabled!");
-    }
-    
-    /**
-     * Setup the database.
-     */
-    private void setupDatabase() {
-        try {
-            getDatabase().find(BlockTable.class).findRowCount();
-        } catch (PersistenceException ex) {
-            log(Level.INFO, "Installing database for " + getName() + " due to first time usage");
-            installDDL();
-        }
-    }
-    
-    @Override
-    public List<Class<?>> getDatabaseClasses() {
-        List<Class<?>> list = new ArrayList<Class<?>>();
-        list.add(BlockTable.class);
-        
-        return list;
     }
 
     /**
@@ -171,9 +139,5 @@ public class halvors extends JavaPlugin {
      */
     public ConfigurationManager getConfigurationManager() {
         return configManager;
-    }
-    
-    public BlockManager getBlockManager() {
-    	return blockManager;
     }
 }

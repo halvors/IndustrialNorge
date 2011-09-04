@@ -4,7 +4,6 @@ version: 0.0.1
 description: 
 author: halvors
 website: halvors.org
-database: true
 
 commands:
     help:
