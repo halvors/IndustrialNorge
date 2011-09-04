@@ -38,10 +38,10 @@
     </build>
     <!-- Dependencies -->
     <dependencies>
-    	<!-- CraftBukkit -->
+    	<!-- Bukkit -->
         <dependency>
             <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
+            <artifactId>bukkit</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

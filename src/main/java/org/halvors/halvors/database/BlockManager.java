@@ -13,8 +13,16 @@ import org.halvors.halvors.halvors;
 public class BlockManager {
 	private final halvors plugin;
 	
+	private static BlockManager instance;
+	
 	public BlockManager(halvors plugin) {
 		this.plugin = plugin;
+		
+		this.instance = this;
+	}
+	
+	public static BlockManager getInstance() {
+		return instance;
 	}
 	
 	public BlockTable getBlockTable(Block block) {
