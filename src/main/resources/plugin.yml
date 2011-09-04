@@ -20,8 +20,18 @@ commands:
         aliases: [tid]
         description:
         usage:
+        
+    armor:
+        aliases: [a]
+        description:
+        usage:
 
-    tkick:
+    hkick:
+        aliases:
+        description:
+        usage:
+
+    hban:
         aliases:
         description:
         usage:
@@ -51,8 +61,12 @@ permissions:
     halvors.admin.*:
         description:
         children:
+            halvors.admin.armor: true
             halvors.admin.kick: true
             halvors.admin.ban: true
+    
+    halvors.admin.armor:
+        description:
             
     halvors.admin.kick:
         description:

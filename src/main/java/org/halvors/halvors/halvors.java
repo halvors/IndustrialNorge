@@ -1,33 +1,17 @@
-/* 
- * Copyright (C) 2011 halvors <halvors@skymiastudios.com>
- * Copyright (C) 2011 speeddemon92 <speeddemon92@gmail.com>
- * Copyright (C) 2011 adamonline45 <adamonline45@gmail.com>
- * 
- * This file is part of Lupi.
- * 
- * Lupi is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * Lupi is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with Lupi.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package org.halvors.halvors;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.bukkit.Material;
 import org.bukkit.event.Event;
+import org.bukkit.inventory.FurnaceRecipe;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.halvors.halvors.command.ArmorCommand;
 import org.halvors.halvors.command.BanCommand;
 import org.halvors.halvors.command.HelpCommand;
 import org.halvors.halvors.command.KickCommand;
@@ -73,7 +57,9 @@ public class halvors extends JavaPlugin {
         // Register our events.
         pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Event.Priority.Normal, this);
         
+        pm.registerEvent(Event.Type.CREATURE_SPAWN, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
+        pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.Normal, this);
         
         pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_QUIT, playerListener, Event.Priority.Normal, this);
@@ -85,9 +71,19 @@ public class halvors extends JavaPlugin {
         getCommand("help").setExecutor(new HelpCommand(this));
         getCommand("stuck").setExecutor(new StuckCommand(this));
         getCommand("time").setExecutor(new TimeCommand(this));
+        getCommand("armor").setExecutor(new ArmorCommand(this));
         
         getCommand("hkick").setExecutor(new KickCommand(this));
         getCommand("hban").setExecutor(new BanCommand(this));
+        
+        // Register our recipes.
+        FurnaceRecipe clayToBrickFurnaceRecipe = new FurnaceRecipe(new ItemStack(Material.BRICK, 1), Material.CLAY);
+        getServer().addRecipe(clayToBrickFurnaceRecipe);
+
+        ShapedRecipe clayRecipe = new ShapedRecipe(new ItemStack(Material.CLAY_BALL, 4));
+        clayRecipe.shape(new String[] { "c" });
+        clayRecipe.setIngredient('c', Material.CLAY);
+        getServer().addRecipe(clayRecipe);
         
         log(Level.INFO, "version " + getVersion() + " is enabled!");
     }
@@ -110,6 +106,10 @@ public class halvors extends JavaPlugin {
         logger.log(level, "[" + getName() + "] " + msg);
     }
     
+    public static halvors getInstance() {
+        return instance;
+    }
+    
     /**
      * Get the name.
      * 
@@ -126,10 +126,6 @@ public class halvors extends JavaPlugin {
      */
     public String getVersion() {
         return desc.getVersion();
-    }
-    
-    public static halvors getInstance() {
-        return instance;
     }
     
     /**
