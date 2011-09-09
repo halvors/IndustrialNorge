@@ -2,10 +2,10 @@ package org.halvors.halvors.listener;
 
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.entity.Cow;
 import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Wolf;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -48,12 +48,10 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 		Entity entity = event.getEntity();
 		World world = entity.getWorld();
 		
-		if (entity instanceof Wolf) {
-			Wolf wolf = (Wolf) entity;
-			
+		if (entity instanceof Cow) {
 			// Make wolf drop bone.
-			ItemStack item = new ItemStack(Material.BONE, 4);
-			world.dropItem(wolf.getLocation(), item);
+			ItemStack item = new ItemStack(Material.BONE, 2);
+			world.dropItem(entity.getLocation(), item);
 		}
 	}
 }

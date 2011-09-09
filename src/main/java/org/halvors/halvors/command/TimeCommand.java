@@ -19,31 +19,29 @@ public class TimeCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			String subCommand = args[0];
-			
 			if (args.length == 0) {
 				
-			} else if (args.length == 1) {
+			} else {
+				String subCommand = args[0];
 				
-			}
-			
-			if (sender.hasPermission("halvors.users.time")) {
-				if (subCommand.equalsIgnoreCase("day") || subCommand.equalsIgnoreCase("dag")) {
-					player.setPlayerTime(0, false);
+				if (sender.hasPermission("halvors.users.time")) {
+					if (subCommand.equalsIgnoreCase("day") || subCommand.equalsIgnoreCase("dag")) {
+						player.setPlayerTime(0, false);
 				
-					sender.sendMessage(ChatColor.YELLOW + "Tid ble forandret til dag.");
+						sender.sendMessage(ChatColor.YELLOW + "Tid ble forandret til dag.");
 				
-					return true;
-				} else if (subCommand.equalsIgnoreCase("night") || subCommand.equalsIgnoreCase("natt")) {
-					player.setPlayerTime(14000, false);
+						return true;
+					} else if (subCommand.equalsIgnoreCase("night") || subCommand.equalsIgnoreCase("natt")) {
+						player.setPlayerTime(14000, false);
 					
-					sender.sendMessage(ChatColor.YELLOW + "Tid ble forandret til natt.");
+						sender.sendMessage(ChatColor.YELLOW + "Tid ble forandret til natt.");
 				
-					return true;
-				} else if (subCommand.equalsIgnoreCase("back") || subCommand.equalsIgnoreCase("tilbake")) {
-					sender.sendMessage(ChatColor.YELLOW + "Du er nå tilbake i riktig døgnrytme :P");
+						return true;
+					} else if (subCommand.equalsIgnoreCase("back") || subCommand.equalsIgnoreCase("tilbake")) {
+						sender.sendMessage(ChatColor.YELLOW + "Du er nå tilbake i riktig døgnrytme :P");
 					
-					return true;
+						return true;
+					}
 				}
 			}
 		}

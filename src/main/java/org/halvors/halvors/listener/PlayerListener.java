@@ -2,6 +2,7 @@ package org.halvors.halvors.listener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -45,10 +46,13 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	@Override
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if (!event.isCancelled()) {
+			Action action = event.getAction();
 			Player player = event.getPlayer();
 			
-			// Infinite tools and armor.
-			RepairUtils.repair(player.getItemInHand(), player);
+			if (action.equals(Action.RIGHT_CLICK_BLOCK)) {
+				// Infinite tools and armor.
+				RepairUtils.repair(player.getItemInHand(), player);
+			}
 		}
 	}
 	
