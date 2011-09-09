@@ -41,7 +41,10 @@ public class RepairUtils {
 		|| type.equals(Material.DIAMOND_SPADE)
 		|| type.equals(Material.DIAMOND_PICKAXE)
 		|| type.equals(Material.DIAMOND_AXE)
-		|| type.equals(Material.DIAMOND_HOE);
+		|| type.equals(Material.DIAMOND_HOE)
+		|| type.equals(Material.FLINT_AND_STEEL)
+		|| type.equals(Material.FISHING_ROD)
+		|| type.equals(Material.SHEARS);
 	}
 	
 	public static boolean isTool(ItemStack item) {

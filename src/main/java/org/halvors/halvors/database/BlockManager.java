@@ -94,4 +94,12 @@ public class BlockManager {
 		
 		return player;
 	}
+	
+	public void setBlockOwner(Block block, Player player) {
+		BlockTable bt = getBlockTable(block);
+		
+		if (bt != null) {
+			bt.setOwner(Player player);
+		}
+	}
 }
