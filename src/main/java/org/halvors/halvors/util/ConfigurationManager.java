@@ -23,6 +23,8 @@ public class ConfigurationManager {
     
     private static ConfigurationManager instance;
     
+    public boolean isMaintenance;
+    
     public ConfigurationManager(halvors plugin) {
         this.plugin = plugin;
         this.worlds = new HashMap<String, WorldConfiguration>();
@@ -44,6 +46,8 @@ public class ConfigurationManager {
         Configuration config = plugin.getConfiguration();
         config.load();
 
+        isMaintenance = config.getBoolean("maintenance", isMaintenance);
+        
         // Load configurations for each world
         for (World world : plugin.getServer().getWorlds()) {
             get(world);

@@ -4,12 +4,18 @@ version: 0.0.1
 description: 
 author: halvors
 website: halvors.org
+database: true
 
 commands:
     help:
         aliases: [hjelp]
         description:
         usage: 
+
+    spawn:
+        aliases:
+        description:
+        usage:
 
     stuck:
         aliases: [s]
@@ -21,8 +27,18 @@ commands:
         description:
         usage:
         
+    bank:
+        aliases:
+        description:
+        usage:
+    
     armor:
         aliases: [a]
+        description:
+        usage:
+        
+    maintenance:
+        aliases: [main]
         description:
         usage:
 
@@ -48,24 +64,34 @@ permissions:
         description:
         children:
             halvors.users.help: true
+            halvors.users.spawn: true
             halvors.users.stuck: true
-            halvors.users.tid: true
+            halvors.users.time: true
+            halvors.users.bank: true
     
     halvors.users.help:
+        description:
+    halvors.users.spawn:
         description:
     halvors.users.stuck:
         description:
     halvors.users.time:
         description:
-        
+    halvors.users.bank:
+        description:
+    
     halvors.admin.*:
         description:
         children:
             halvors.admin.armor: true
+            halvors.admin.maintenance: true
             halvors.admin.kick: true
             halvors.admin.ban: true
     
     halvors.admin.armor:
+        description:
+            
+    halvors.admin.maintenance:
         description:
             
     halvors.admin.kick:

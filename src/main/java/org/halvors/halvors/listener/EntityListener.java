@@ -7,11 +7,13 @@ import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.halvors.halvors.halvors;
 import org.halvors.halvors.util.CreatureUtils;
+import org.halvors.halvors.util.RepairUtils;
 
 public class EntityListener extends org.bukkit.event.entity.EntityListener {
 //	private final halvors plugin;
@@ -40,6 +42,18 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 			if (entity instanceof Player) {
 				event.setCancelled(true);
 			}
+			
+			if (event instanceof EntityDamageByEntityEvent) {
+				EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) event;
+				Entity damager = edbee.getDamager();
+				
+				if (damager instanceof Player) {
+					Player player = (Player) damager;
+						
+					// Infinite tools and armor.
+					RepairUtils.repair(player.getItemInHand(), player);
+				}
+			}
 		}
 	}
 	
@@ -51,7 +65,7 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 		if (entity instanceof Cow) {
 			// Make wolf drop bone.
 			ItemStack item = new ItemStack(Material.BONE, 2);
-			world.dropItem(entity.getLocation(), item);
+			world.dropItemNaturally(entity.getLocation(), item);
 		}
 	}
 }

@@ -7,18 +7,30 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerPreLoginEvent.Result;
 import org.halvors.halvors.halvors;
+import org.halvors.halvors.util.ConfigurationManager;
 import org.halvors.halvors.util.PlayerUtils;
 import org.halvors.halvors.util.RepairUtils;
 
 public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 //	private final halvors plugin;
+	private ConfigurationManager configManager;
 	
 	public PlayerListener(halvors plugin) {
 //		this.plugin = plugin;
+		this.configManager = plugin.getConfigurationManager();
 	}
-
+	
+	@Override
+	public void onPlayerPreLogin(PlayerPreLoginEvent event) {
+		if (configManager.isMaintenance && !PlayerUtils.isAdmin(event.getName())) {
+			event.disallow(Result.KICK_OTHER, "Serveren er nede på grunn av vedlikehold.");
+		}
+	}
+	
 	@Override
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();

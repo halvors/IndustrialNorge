@@ -13,6 +13,10 @@ public class PlayerUtils {
 		}
 	}
 	
+	public static boolean isAdmin(String name) {
+		return name.equalsIgnoreCase("halvorshalvors");
+	}
+	
 	/**
      * Get the best matching player.
      * 

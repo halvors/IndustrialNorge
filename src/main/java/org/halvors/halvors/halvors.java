@@ -13,8 +13,11 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.halvors.halvors.command.ArmorCommand;
 import org.halvors.halvors.command.BanCommand;
+import org.halvors.halvors.command.BankCommand;
 import org.halvors.halvors.command.HelpCommand;
 import org.halvors.halvors.command.KickCommand;
+import org.halvors.halvors.command.MaintenanceCommand;
+import org.halvors.halvors.command.SpawnCommand;
 import org.halvors.halvors.command.StuckCommand;
 import org.halvors.halvors.command.TimeCommand;
 import org.halvors.halvors.listener.BlockListener;
@@ -29,7 +32,7 @@ public class halvors extends JavaPlugin {
     private PluginDescriptionFile desc;
     
     private final ConfigurationManager configManager;
-    
+
     private final BlockListener blockListener;
     private final EntityListener entityListener;
     private final PlayerListener playerListener;
@@ -61,6 +64,7 @@ public class halvors extends JavaPlugin {
         pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.Normal, this);
         
+        pm.registerEvent(Event.Type.PLAYER_PRELOGIN, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_QUIT, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Event.Priority.Normal, this);
@@ -68,10 +72,13 @@ public class halvors extends JavaPlugin {
 
         // Register our commands.
         getCommand("help").setExecutor(new HelpCommand(this));
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
         getCommand("stuck").setExecutor(new StuckCommand(this));
         getCommand("time").setExecutor(new TimeCommand(this));
-        getCommand("armor").setExecutor(new ArmorCommand(this));
+        getCommand("bank").setExecutor(new BankCommand(this));
         
+        getCommand("armor").setExecutor(new ArmorCommand(this));
+        getCommand("maintenance").setExecutor(new MaintenanceCommand(this));
         getCommand("hkick").setExecutor(new KickCommand(this));
         getCommand("hban").setExecutor(new BanCommand(this));
         
@@ -83,6 +90,11 @@ public class halvors extends JavaPlugin {
         clayRecipe.shape(new String[] { "c" });
         clayRecipe.setIngredient('c', Material.CLAY);
         getServer().addRecipe(clayRecipe);
+        
+        ShapedRecipe snowRecipe = new ShapedRecipe(new ItemStack(Material.SNOW_BALL, 4));
+        clayRecipe.shape(new String[] { "s" });
+        clayRecipe.setIngredient('s', Material.SNOW_BLOCK);
+        getServer().addRecipe(snowRecipe);
         
         log(Level.INFO, "version " + getVersion() + " is enabled!");
     }

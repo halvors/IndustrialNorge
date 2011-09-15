@@ -24,8 +24,8 @@ public class ArmorCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (sender.hasPermission("halvors.admin.armor")) {	
-				ItemStack newHelmet = player.getItemInHand();
-				Material type = newHelmet.getType();
+				ItemStack item = player.getItemInHand();
+				Material type = item.getType();
 				
 				if (ArmorUtils.isAllowed(type)) {
 					PlayerInventory inventory = player.getInventory();
@@ -33,13 +33,15 @@ public class ArmorCommand implements CommandExecutor {
 					
 					if (helmet.getAmount() > 0) {
 						inventory.setHelmet(null);
-						inventory.addItem(new ItemStack(helmet.getType(), 1));
+						inventory.addItem(new ItemStack(helmet.getType(), 1, helmet.getDurability()));
 					}
 					
-					inventory.setHelmet(new ItemStack(type, 1));
-					newHelmet.setAmount(newHelmet.getAmount() - 1);
+					ItemStack newHelmet = new ItemStack(type, 1, item.getDurability());
+					inventory.setHelmet(newHelmet);
+					item.setAmount(newHelmet.getAmount() - 1);
 					
-					sender.sendMessage(ChatColor.YELLOW + "Du har nå en " + type.toString() + " på hodet.");
+					String itemName = type.toString().toString().toLowerCase();
+					sender.sendMessage(ChatColor.YELLOW + "Du har nå en " + itemName + " på hodet.");
 				} else {
 					sender.sendMessage(ChatColor.RED + "Dette er ikke en hatt.");
 				}
