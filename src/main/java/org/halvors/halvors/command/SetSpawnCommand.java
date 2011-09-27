@@ -1,5 +1,6 @@
 package org.halvors.halvors.command;
 
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -7,10 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.halvors.halvors.halvors;
 
-public class SpawnCommand implements CommandExecutor {
+public class SetSpawnCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public SpawnCommand(halvors plugin) {
+	public SetSpawnCommand(halvors plugin) {
 //		this.plugin = plugin;
 	}
 	
@@ -19,10 +20,11 @@ public class SpawnCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.user.spawn")) {
+			if (sender.hasPermission("halvors.admin.setspawn")) {
 				World world = player.getWorld();
+				Location loc = player.getLocation();
 				
-				player.teleport(world.getSpawnLocation());
+				world.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 			}
 		}
 		

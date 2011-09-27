@@ -23,7 +23,12 @@ public class ConfigurationManager {
     
     private static ConfigurationManager instance;
     
-    public boolean isMaintenance;
+    // MySQL
+	public String dbuser;
+	public String dbpass;
+	public String dbname;
+	public String dbhost;
+	public int	dbport;
     
     public ConfigurationManager(halvors plugin) {
         this.plugin = plugin;
@@ -46,7 +51,12 @@ public class ConfigurationManager {
         Configuration config = plugin.getConfiguration();
         config.load();
 
-        isMaintenance = config.getBoolean("maintenance", isMaintenance);
+        // Mysql
+        dbuser = config.getString("Database.user", "username");
+		dbpass = config.getString("Database.pass", "password");
+		dbname = config.getString("Database.name", "database");
+		dbhost = config.getString("Database.host", "localhost");
+		dbport = config.getInt("Database.port", 3306);
         
         // Load configurations for each world
         for (World world : plugin.getServer().getWorlds()) {

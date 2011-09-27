@@ -10,6 +10,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.halvors.halvors.halvors;
 import org.halvors.halvors.util.CreatureUtils;
@@ -66,6 +67,22 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 			// Make wolf drop bone.
 			ItemStack item = new ItemStack(Material.BONE, 2);
 			world.dropItemNaturally(entity.getLocation(), item);
+		}
+	}
+	
+	@Override
+	public void onFoodLevelChange(FoodLevelChangeEvent event) {
+		if (event.isCancelled()) {
+			Entity entity = event.getEntity();
+			
+			if (entity instanceof Player) {
+				Player player = (Player) entity;
+				
+				if (player.getFoodLevel() < 20) {
+					player.setFoodLevel(20);
+				}
+				
+			}
 		}
 	}
 }

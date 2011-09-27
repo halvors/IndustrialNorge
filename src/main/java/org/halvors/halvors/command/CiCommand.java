@@ -4,23 +4,31 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.halvors.halvors.halvors;
 
-public class HelpCommand implements CommandExecutor {
+public class CiCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public HelpCommand(halvors plugin) {
+	public CiCommand(halvors plugin) {
 //		this.plugin = plugin;
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
-		if (sender.hasPermission("halvors.user.help")) {
+		if (sender instanceof Player) {
+			Player player = (Player) sender;
+			
 			if (args.length == 0) {
-				sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennå :(");
+				if (sender.hasPermission("halvors.user.ci")) {
+					player.getInventory().clear();
+					sender.sendMessage(ChatColor.GREEN + "Poff! Dine items forsvant i evigheten.");
+				}
+				
+				return true;
 			}
 		}
 		
-		return false;
+		return true;
 	}
 }

@@ -23,7 +23,7 @@ public class StuckCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			World world = player.getWorld();
 			
-			if (player.hasPermission("halvors.users.stuck")) {
+			if (player.hasPermission("halvors.user.stuck")) {
 				Location pos = player.getLocation();
 				Environment env = world.getEnvironment();
 				Location newPos = null;
