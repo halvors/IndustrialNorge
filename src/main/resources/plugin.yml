@@ -32,6 +32,16 @@ commands:
         description:
         usage:
     
+    tp:
+        aliases:
+        description:
+        usage:
+    
+    tphere:
+        aliases:
+        description:
+        usage:
+    
     armor:
         aliases: [a]
         description:

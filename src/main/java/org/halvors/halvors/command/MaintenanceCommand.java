@@ -7,16 +7,15 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.halvors.halvors.halvors;
-import org.halvors.halvors.util.ConfigurationManager;
 import org.halvors.halvors.util.PlayerUtils;
 
 public class MaintenanceCommand implements CommandExecutor {
 //	private final halvors plugin;
-	private final ConfigurationManager configManager;
+//	private final ConfigurationManager configManager;
 	
 	public MaintenanceCommand(halvors plugin) {
 //		this.plugin = plugin;
-		this.configManager = plugin.getConfigurationManager();
+//		this.configManager = plugin.getConfigurationManager();
 	}
 	
 	@Override

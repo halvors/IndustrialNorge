@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerPreLoginEvent.Result;
@@ -75,6 +76,13 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 			
 			// Infinite tools and armor.
 			RepairUtils.repair(player.getItemInHand(), player);
+		}
+	}
+	
+	@Override
+	public void onPlayerMove(PlayerMoveEvent event) {
+		if (event.isCancelled()) {
+			Player player = event.getPlayer();
 		}
 	}
 }

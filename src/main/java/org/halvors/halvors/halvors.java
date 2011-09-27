@@ -20,6 +20,8 @@ import org.halvors.halvors.command.MaintenanceCommand;
 import org.halvors.halvors.command.SpawnCommand;
 import org.halvors.halvors.command.StuckCommand;
 import org.halvors.halvors.command.TimeCommand;
+import org.halvors.halvors.command.TpCommand;
+import org.halvors.halvors.command.TphCommand;
 import org.halvors.halvors.listener.BlockListener;
 import org.halvors.halvors.listener.EntityListener;
 import org.halvors.halvors.listener.PlayerListener;
@@ -63,12 +65,14 @@ public class halvors extends JavaPlugin {
         pm.registerEvent(Event.Type.CREATURE_SPAWN, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.Normal, this);
-        
+
         pm.registerEvent(Event.Type.PLAYER_PRELOGIN, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_QUIT, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Event.Priority.Normal, this);
+        pm.registerEvent(Event.Type.PLAYER_MOVE, playerListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Event.Priority.Normal, this);
+        
 
         // Register our commands.
         getCommand("help").setExecutor(new HelpCommand(this));
@@ -76,6 +80,9 @@ public class halvors extends JavaPlugin {
         getCommand("stuck").setExecutor(new StuckCommand(this));
         getCommand("time").setExecutor(new TimeCommand(this));
         getCommand("bank").setExecutor(new BankCommand(this));
+        
+        getCommand("tp").setExecutor(new TpCommand(this));
+        getCommand("tphere").setExecutor(new TphCommand(this));
         
         getCommand("armor").setExecutor(new ArmorCommand(this));
         getCommand("maintenance").setExecutor(new MaintenanceCommand(this));
