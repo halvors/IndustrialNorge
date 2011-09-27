@@ -1,5 +1,6 @@
 package org.halvors.halvors;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,8 @@ import org.halvors.halvors.command.SetSpawnCommand;
 import org.halvors.halvors.command.SpawnCommand;
 import org.halvors.halvors.command.StuckCommand;
 import org.halvors.halvors.command.TimeCommand;
+import org.halvors.halvors.command.TpCommand;
+import org.halvors.halvors.command.TphCommand;
 import org.halvors.halvors.handlers.MySQLHandler;
 import org.halvors.halvors.listener.BlockListener;
 import org.halvors.halvors.listener.EntityListener;
@@ -29,8 +32,6 @@ import org.halvors.halvors.listener.VehicleListener;
 import org.halvors.halvors.sql.MySQLConnector;
 import org.halvors.halvors.sql.MySQLObject;
 import org.halvors.halvors.util.ConfigurationManager;
-
-import com.mysql.jdbc.Connection;
 
 public class halvors extends JavaPlugin {
     private final Logger logger = Logger.getLogger("Minecraft");
@@ -82,7 +83,7 @@ public class halvors extends JavaPlugin {
 		sqlHandler.update("CREATE TABLE IF NOT EXISTS `log` (`id` int(11) NOT NULL AUTO_INCREMENT,`pid` int(6) NOT NULL,`vid` int(6) NOT NULL,`aid` int(3) NOT NULL,`amount` int(11) NOT NULL DEFAULT '0',`data` varchar(255) NOT NULL,`time` int(11) NOT NULL,PRIMARY KEY (`id`)) ENGINE=MyISAM DEFAULT CHARSET=latin1");
 		sqlHandler.update("CREATE TABLE IF NOT EXISTS `users` (`id` int(6) NOT NULL AUTO_INCREMENT,`name` varchar(16) NOT NULL,`status` int(2) NOT NULL DEFAULT '0',`active` int(11) NOT NULL,`last_login` int(11) NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `name` (`name`)) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1");
 		sqlHandler.update("CREATE TABLE IF NOT EXISTS `objects` (`id` int(11) NOT NULL AUTO_INCREMENT, `name` varchar(255) NOT NULL, `type` int(3) NOT NULL, `object` blob NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
-        
+
         // Register our events.
         registerEvents();
 
@@ -170,20 +171,24 @@ public class halvors extends JavaPlugin {
 	}
 	
 	public void sqlConnection() {
-		Connection conn = sqlConnector.createConnection();
+        Connection conn = sqlConnector.createConnection();
 
 		if (conn == null) {
+			pm.disablePlugin(this);
+			
 			log(Level.SEVERE, "Kunne ikke opprette forbindelse til mysql, disabler plugin.");
-			getServer().getPluginManager().disablePlugin(this);
+			
 			return;
 		} else {
 			try {
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				log(Level.SEVERE, "Feil under lukking av mysql tilkobling.", e);
+				
+				log(Level.SEVERE, "Feil under lukking av mysql tilkobling.");
 			}
 		}
+		
 		sqlHandler.initialize();
 	}
 
