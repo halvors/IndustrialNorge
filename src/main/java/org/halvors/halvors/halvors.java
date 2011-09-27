@@ -24,6 +24,7 @@ import org.halvors.halvors.command.StuckCommand;
 import org.halvors.halvors.command.TimeCommand;
 import org.halvors.halvors.command.TpCommand;
 import org.halvors.halvors.command.TphCommand;
+import org.halvors.halvors.handlers.BlockProtect;
 import org.halvors.halvors.handlers.MySQLHandler;
 import org.halvors.halvors.listener.BlockListener;
 import org.halvors.halvors.listener.EntityListener;
@@ -43,10 +44,13 @@ public class halvors extends JavaPlugin {
     private final ConfigurationManager configManager = new ConfigurationManager(this);
 
     // MySQL
-	private MySQLConnector sqlConnector = new MySQLConnector(this);
-	private MySQLHandler sqlHandler = new MySQLHandler(this);
-	private MySQLObject sqlObject = new MySQLObject(this);
+	private final MySQLConnector sqlConnector = new MySQLConnector(this);
+	private final MySQLHandler sqlHandler = new MySQLHandler(this);
+	private final MySQLObject sqlObject = new MySQLObject(this);
     
+	// Handlers
+	private final BlockProtect blockProtect = new BlockProtect(this);
+	
 	// Listeners
     private final BlockListener blockListener = new BlockListener(this);
     private final EntityListener entityListener = new EntityListener(this);
@@ -113,15 +117,11 @@ public class halvors extends JavaPlugin {
 
 		// Entity events
 		pm.registerEvent(Event.Type.CREATURE_SPAWN, entityListener, Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.ENTITY_COMBUST, entityListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.ENTITY_EXPLODE, entityListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.ENTITY_INTERACT, entityListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.ENTITY_TARGET, entityListener, Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.ENDERMAN_PICKUP, entityListener, Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.ENDERMAN_PLACE, entityListener, Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.PIG_ZAP, entityListener, Event.Priority.Normal, this);
 		
 		// Player Events
 		pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Normal, this);
@@ -243,5 +243,9 @@ public class halvors extends JavaPlugin {
 	
 	public MySQLObject getMySQLObject() {
 		return sqlObject;
+	}
+	
+	public BlockProtect getBlockProtect() {
+		return blockProtect;
 	}
 }
