@@ -27,7 +27,7 @@ commands:
         usage:
 
     loc:
-        aliases: [loc]
+        aliases: [lok]
         description:
         usage:
 
