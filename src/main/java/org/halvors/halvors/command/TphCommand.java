@@ -21,7 +21,7 @@ public class TphCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 1) {
-				if (sender.hasPermission("halvors.admin.tph")) {
+				if (sender.hasPermission("halvors.tph")) {
 					Player target = PlayerUtils.getPlayer(args[0]);
 				
 					if (target != null) {

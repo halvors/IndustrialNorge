@@ -23,7 +23,7 @@ public class ArmorCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.admin.armor")) {	
+			if (sender.hasPermission("halvors.armor")) {	
 				ItemStack item = player.getItemInHand();
 				Material type = item.getType();
 				

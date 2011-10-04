@@ -7,10 +7,45 @@ website: halvors.org
 database: true
 
 commands:
+    armor:
+        aliases: [a]
+        description:
+        usage:
+
+    ban:
+        aliases:
+        description:
+        usage:
+
+    bank:
+        aliases:
+        description:
+        usage:
+
+    ci:
+        aliases:
+        description:
+        usage:
+
     help:
         aliases: [hjelp]
         description:
         usage: 
+
+    kick:
+        aliases:
+        description:
+        usage:
+
+    maintenance:
+        aliases:
+        description:
+        usage:
+
+    setspawn:
+        aliases:
+        description:
+        usage:
 
     spawn:
         aliases:
@@ -26,86 +61,72 @@ commands:
         aliases: [tid]
         description:
         usage:
-        
-    bank:
-        aliases:
-        description:
-        usage:
     
     tp:
         aliases:
         description:
         usage:
     
-    tphere:
-        aliases:
-        description:
-        usage:
-    
-    armor:
-        aliases: [a]
-        description:
-        usage:
-        
-    maintenance:
-        aliases: [main]
-        description:
-        usage:
-
-    hkick:
+    tphere: [tph]
         aliases:
         description:
         usage:
 
-    hban:
-        aliases:
-        description:
-        usage:
-        
 permissions:
     halvors.*:
         default: op
-        description: 
-        children: 
-            halvors.users.*: true
-            halvors.admin.*: true
-        
-    halvors.users.*:
         description:
         children:
-            halvors.users.help: true
-            halvors.users.spawn: true
-            halvors.users.stuck: true
-            halvors.users.time: true
-            halvors.users.bank: true
+            halvors.*: true
+            halvors.armor: true
+            halvors.ban: true
+            halvors.bank: true
+            halvors.ci: true
+            halvors.help: true
+            halvors.kick: true
+            halvors.maintenance: true
+            halvors.setspawn: true
+            halvors.spawn: true
+            halvors.stuck: true
+            halvors.time: true
+            halvors.tp: true
+            halvors.tphere: true 
     
-    halvors.users.help:
+    halvors.armor:
         description:
-    halvors.users.spawn:
+
+    halvors.ban:
         description:
-    halvors.users.stuck:
+
+    halvors.bank:
         description:
-    halvors.users.time:
+
+    halvors.ci:
         description:
-    halvors.users.bank:
+
+    halvors.help:
         description:
-    
-    halvors.admin.*:
+
+    halvors.kick:
         description:
-        children:
-            halvors.admin.armor: true
-            halvors.admin.maintenance: true
-            halvors.admin.kick: true
-            halvors.admin.ban: true
-    
-    halvors.admin.armor:
+
+    halvors.maintenance:
         description:
-            
-    halvors.admin.maintenance:
+
+    halvors.setspawn:
         description:
-            
-    halvors.admin.kick:
+
+    halvors.spawn:
         description:
-        
-    halvors.admin.ban:
+
+    halvors.stuck:
+        description:
+
+    halvors.time:
+        description:
+
+    halvors.tp:
+        description:
+
+    halvors.tphere: 
         description:

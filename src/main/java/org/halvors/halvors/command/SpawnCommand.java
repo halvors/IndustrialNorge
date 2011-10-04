@@ -19,7 +19,7 @@ public class SpawnCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.user.spawn")) {
+			if (sender.hasPermission("halvors.spawn")) {
 				World world = player.getWorld();
 				
 				player.teleport(world.getSpawnLocation());

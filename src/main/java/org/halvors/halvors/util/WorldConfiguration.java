@@ -1,8 +1,11 @@
 package org.halvors.halvors.util;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 
+import org.bukkit.entity.CreatureType;
 import org.bukkit.util.config.Configuration;
 import org.halvors.halvors.halvors;
 
@@ -12,8 +15,7 @@ import org.halvors.halvors.halvors;
  * @author halvors
  */
 public class WorldConfiguration {
-//    private final halvors plugin;
-    
+    private final halvors plugin;  
     private final ConfigurationManager configManager;
     
     private String worldName;
@@ -21,11 +23,11 @@ public class WorldConfiguration {
     private File configFile;
     
     /* Configuration data start */
-    
+    public Set<CreatureType> blockCreatureSpawn;
     /* Configuration data end */
     
     public WorldConfiguration(halvors plugin, String worldName) {
-//        this.plugin = plugin;
+        this.plugin = plugin;
         this.configManager = plugin.getConfigurationManager();
         this.worldName = worldName;
 
@@ -45,6 +47,18 @@ public class WorldConfiguration {
      */
     private void load() {
         config.load();
+        
+        blockCreatureSpawn = new HashSet<CreatureType>();
+        
+        for (String creatureName : config.getStringList("blockCreatureSpawn", null) {
+            CreatureType creature = CreatureType.fromName(creatureName);
+
+            if (creature == null) {
+                plugin.log(Level.WARNING, "Unknown mob type '" + creatureName + "'");
+            } else {
+                blockCreatureSpawn.add(creature);
+            }
+        }
         
         config.save();
     }

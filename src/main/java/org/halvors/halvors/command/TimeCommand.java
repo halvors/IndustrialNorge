@@ -20,11 +20,11 @@ public class TimeCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 0) {
-				sender.sendMessage(ChatColor.YELLOW + "Din tid er: " + ChatColor.WHITE + player.getPlayerTime());
+				sender.sendMessage(ChatColor.YELLOW + "Din tid er: " + ChatColor.WHITE + Long.toString(player.getPlayerTime()));
 			} else {
 				String subCommand = args[0];
 				
-				if (sender.hasPermission("halvors.user.time")) {
+				if (sender.hasPermission("halvors.time")) {
 					if (subCommand.equalsIgnoreCase("day") || subCommand.equalsIgnoreCase("dag")) {
 						player.setPlayerTime(0, false);
 				
@@ -38,7 +38,7 @@ public class TimeCommand implements CommandExecutor {
 				
 						return true;
 					} else if (subCommand.equalsIgnoreCase("back") || subCommand.equalsIgnoreCase("tilbake")) {
-						sender.sendMessage(ChatColor.YELLOW + "Du er nå tilbake i riktig døgnrytme :P");
+						sender.sendMessage(ChatColor.YELLOW + "Du er n� tilbake i riktig døgnrytme :P");
 					
 						return true;
 					}

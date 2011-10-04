@@ -1,6 +1,8 @@
 package org.halvors.halvors.listener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerChatEvent;
@@ -36,7 +38,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 		// Update player's displayname.
 		PlayerUtils.setDisplayName(player);
 		
-		event.setJoinMessage(player.getDisplayName() + ChatColor.GREEN + " logget pÃ¥.");
+		event.setJoinMessage(player.getDisplayName() + ChatColor.GREEN + " logget på.");
 	}
 	
 	@Override
@@ -50,6 +52,9 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	public void onPlayerChat(PlayerChatEvent event) {
 		Player player = event.getPlayer();
 		
+		// Update player's displayname.
+		PlayerUtils.setDisplayName(player);
+		
 		event.setFormat(player.getDisplayName() + ": " + event.getMessage());
 	}
 	
@@ -59,20 +64,14 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 			Action action = event.getAction();
 			Player player = event.getPlayer();
 			
+			
 			if (action.equals(Action.RIGHT_CLICK_BLOCK)) {
+				Block block = event.getClickedBlock();
+				Material type = block.getType();
+				
 				// Infinite tools and armor.
 				RepairUtils.repair(player.getItemInHand(), player);
 			}
-		}
-	}
-	
-	@Override
-	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-		if (!event.isCancelled()) {
-			Player player = event.getPlayer();
-			
-			// Infinite tools and armor.
-			RepairUtils.repair(player.getItemInHand(), player);
 		}
 	}
 }

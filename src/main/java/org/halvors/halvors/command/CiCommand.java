@@ -20,7 +20,7 @@ public class CiCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 0) {
-				if (sender.hasPermission("halvors.user.ci")) {
+				if (sender.hasPermission("halvors.ci")) {
 					player.getInventory().clear();
 					sender.sendMessage(ChatColor.GREEN + "Poff! Dine items forsvant i evigheten.");
 				}

@@ -21,7 +21,7 @@ public class BankCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 //			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.user.bank")) {
+			if (sender.hasPermission("halvors.bank")) {
 				if (args.length == 0) {
 					sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennå :(");
 				}

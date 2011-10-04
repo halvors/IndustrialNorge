@@ -20,7 +20,7 @@ public class SetSpawnCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.admin.setspawn")) {
+			if (sender.hasPermission("halvors.setspawn")) {
 				World world = player.getWorld();
 				Location loc = player.getLocation();
 				

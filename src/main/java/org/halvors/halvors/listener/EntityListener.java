@@ -13,23 +13,31 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.halvors.halvors.halvors;
+import org.halvors.halvors.util.ConfigurationManager;
 import org.halvors.halvors.util.CreatureUtils;
 import org.halvors.halvors.util.RepairUtils;
+import org.halvors.halvors.util.WorldConfiguration;
 
 public class EntityListener extends org.bukkit.event.entity.EntityListener {
 //	private final halvors plugin;
+	private final ConfigurationManager configManager;
 	
 	public EntityListener(halvors plugin) {
 //		this.plugin = plugin;
+		this.configManager = plugin.getConfigurationManager();
 	}
 
 	@Override
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
 		if (!event.isCancelled()) {
-			CreatureType type = event.getCreatureType();
+			Entity entity = event.getEntity();
+			World world = entity.getWorld();
+			WorldConfiguration worldConfig = configManager.get(world);
 			
 			// Prevent creatures that not is set allowed to spawn.
-			if (!CreatureUtils.isAllowed(type)) {
+			CreatureType type = event.getCreatureType();
+			
+			if (worldConfig.blockCreatureSpawn.contains(type)) {
 				event.setCancelled(true);
 			}
 		}
@@ -78,10 +86,9 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 			if (entity instanceof Player) {
 				Player player = (Player) entity;
 				
-				if (player.getFoodLevel() < 20) {
-					player.setFoodLevel(20);
-				}
-				
+				// Hindre foodbar i å synke.
+				// TODO: Add config option here.
+				event.setCancelled(true);
 			}
 		}
 	}

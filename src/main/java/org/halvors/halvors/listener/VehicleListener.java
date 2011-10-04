@@ -13,32 +13,30 @@ public class VehicleListener extends org.bukkit.event.vehicle.VehicleListener {
 //		this.plugin = plugin;
 	}
 
-	// Konstant hastighet for minecarts.
 	public void onVehicleUpdate(VehicleUpdateEvent event) {
 		Vehicle vehicle = event.getVehicle();
 		
-		if (!(vehicle instanceof Minecart) || vehicle.getPassenger() == null) {
-			return;
-		}
-
-		Vector vel = vehicle.getVelocity();
+		// Konstant hastighet for minecarts.
+		if (vehicle instanceof Minecart || vehicle.getPassenger() != null) {
+			Vector vel = vehicle.getVelocity();
 		
-		if (vel.getX() > 0) {
-			vel.setX(0.6);
-		}
+			if (vel.getX() > 0) {
+				vel.setX(0.6);
+			}
 		
-		if (vel.getX() < 0) {
-			vel.setX(-0.6);
-		}
+			if (vel.getX() < 0) {
+				vel.setX(-0.6);
+			}
 		
-		if (vel.getZ() > 0) {
-			vel.setZ(0.6);
-		}
+			if (vel.getZ() > 0) {
+				vel.setZ(0.6);
+			}
+			
+			if (vel.getZ() < 0) {
+				vel.setZ(-0.6);
+			}
 		
-		if (vel.getZ() < 0) {
-			vel.setZ(-0.6);
+			vehicle.setVelocity(vel);
 		}
-		
-		vehicle.setVelocity(vel);
 	}
 }

@@ -18,13 +18,13 @@ public class MaintenanceCommand implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
-		if (sender.hasPermission("halvors.admin.maintenance")) {
+		if (sender.hasPermission("halvors.maintenance")) {
 			if (args.length == 0) {
 				sender.sendMessage(ChatColor.RED + "Serveren er nå i vedlikeholds modus.");
 				
 				for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 					if (!PlayerUtils.isAdmin(player.getName())) {
-						player.kickPlayer("Serveren går ned for vedlikehold.");
+						player.kickPlayer("Serveren g�r ned for vedlikehold.");
 					}
 				}
 			}
