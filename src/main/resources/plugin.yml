@@ -1,18 +1,12 @@
 name: halvors
 main: org.halvors.halvors.halvors
-version: 0.0.1
+version: 0.1
 description: 
 author: halvors
 website: halvors.org
-database: true
 
 commands:
     armor:
-        aliases: [a]
-        description:
-        usage:
-
-    ban:
         aliases:
         description:
         usage:
@@ -30,10 +24,10 @@ commands:
     help:
         aliases: [hjelp]
         description:
-        usage: 
+        usage:
 
-    kick:
-        aliases:
+    loc:
+        aliases: [loc]
         description:
         usage:
 
@@ -61,23 +55,14 @@ commands:
         aliases: [tid]
         description:
         usage:
-    
-    tp:
-        aliases:
-        description:
-        usage:
-    
-    tphere: [tph]
-        aliases:
-        description:
-        usage:
 
 permissions:
     halvors.*:
         default: op
         description:
         children:
-            halvors.*: true
+            halvors.group.*: true            
+
             halvors.armor: true
             halvors.ban: true
             halvors.bank: true
@@ -93,7 +78,7 @@ permissions:
             halvors.tphere: true 
     
     halvors.armor:
-        description:
+        description:    
 
     halvors.ban:
         description:
@@ -129,4 +114,16 @@ permissions:
         description:
 
     halvors.tphere: 
+        description:
+
+    halvors.group.*:
+        description:
+        children:
+            halvors.group.admin: true
+            halvors.group.mod: true
+
+    halvors.group.admin:
+        description:
+
+    halvors.group.mod:
         description:

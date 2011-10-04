@@ -50,7 +50,7 @@ public class WorldConfiguration {
         
         blockCreatureSpawn = new HashSet<CreatureType>();
         
-        for (String creatureName : config.getStringList("blockCreatureSpawn", null) {
+        for (String creatureName : config.getStringList("blockCreatureSpawn", null)) {
             CreatureType creature = CreatureType.fromName(creatureName);
 
             if (creature == null) {

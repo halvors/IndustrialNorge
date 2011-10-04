@@ -7,15 +7,12 @@ import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.halvors.halvors.halvors;
 import org.halvors.halvors.util.ConfigurationManager;
-import org.halvors.halvors.util.CreatureUtils;
-import org.halvors.halvors.util.RepairUtils;
 import org.halvors.halvors.util.WorldConfiguration;
 
 public class EntityListener extends org.bukkit.event.entity.EntityListener {
@@ -51,18 +48,6 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 			if (entity instanceof Player) {
 				event.setCancelled(true);
 			}
-			
-			if (event instanceof EntityDamageByEntityEvent) {
-				EntityDamageByEntityEvent edbee = (EntityDamageByEntityEvent) event;
-				Entity damager = edbee.getDamager();
-				
-				if (damager instanceof Player) {
-					Player player = (Player) damager;
-						
-					// Infinite tools and armor.
-					RepairUtils.repair(player.getItemInHand(), player);
-				}
-			}
 		}
 	}
 	
@@ -87,7 +72,10 @@ public class EntityListener extends org.bukkit.event.entity.EntityListener {
 				Player player = (Player) entity;
 				
 				// Hindre foodbar i å synke.
-				// TODO: Add config option here.
+				if (player.getFoodLevel() < 20) {
+					player.setFoodLevel(20);
+				}
+				
 				event.setCancelled(true);
 			}
 		}

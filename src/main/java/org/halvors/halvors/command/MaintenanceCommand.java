@@ -27,6 +27,8 @@ public class MaintenanceCommand implements CommandExecutor {
 						player.kickPlayer("Serveren går ned for vedlikehold.");
 					}
 				}
+				
+				return true;
 			}
 		}
 		

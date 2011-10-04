@@ -1,12 +1,9 @@
 package org.halvors.halvors.listener;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPreLoginEvent;
@@ -66,9 +63,6 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 			
 			
 			if (action.equals(Action.RIGHT_CLICK_BLOCK)) {
-				Block block = event.getClickedBlock();
-				Material type = block.getType();
-				
 				// Infinite tools and armor.
 				RepairUtils.repair(player.getItemInHand(), player);
 			}

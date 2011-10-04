@@ -1,5 +1,6 @@
 package org.halvors.halvors.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -21,10 +22,16 @@ public class SetSpawnCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (sender.hasPermission("halvors.setspawn")) {
-				World world = player.getWorld();
-				Location loc = player.getLocation();
+				if (args.length == 0) {
+					World world = player.getWorld();
+					Location loc = player.getLocation();
 				
-				world.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+					sender.sendMessage(ChatColor.YELLOW + "Spawn er nå satt til: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockY() + ".");
+					
+					world.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+					
+					return true;
+				}
 			}
 		}
 		

@@ -19,12 +19,12 @@ public class TimeCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (args.length == 0) {
-				sender.sendMessage(ChatColor.YELLOW + "Din tid er: " + ChatColor.WHITE + Long.toString(player.getPlayerTime()));
-			} else {
-				String subCommand = args[0];
+			if (sender.hasPermission("halvors.time")) {
+				if (args.length == 0) {
+					sender.sendMessage(ChatColor.YELLOW + "Din tid er: " + ChatColor.WHITE + Long.toString(player.getPlayerTime()));
+				} else {
+					String subCommand = args[0];
 				
-				if (sender.hasPermission("halvors.time")) {
 					if (subCommand.equalsIgnoreCase("day") || subCommand.equalsIgnoreCase("dag")) {
 						player.setPlayerTime(0, false);
 				
