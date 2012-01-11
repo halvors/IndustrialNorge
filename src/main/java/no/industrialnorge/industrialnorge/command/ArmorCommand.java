@@ -1,4 +1,7 @@
-package org.halvors.halvors.command;
+package no.industrialnorge.industrialnorge.command;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
+import no.industrialnorge.industrialnorge.util.ArmorUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -8,13 +11,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.halvors.halvors.halvors;
-import org.halvors.halvors.util.ArmorUtils;
 
 public class ArmorCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public ArmorCommand(halvors plugin) {
+	public ArmorCommand(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 	
@@ -23,7 +24,7 @@ public class ArmorCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.armor")) {	
+			if (sender.hasPermission("industrialnorge.armor")) {	
 				ItemStack item = player.getItemInHand();
 				Material type = item.getType();
 				

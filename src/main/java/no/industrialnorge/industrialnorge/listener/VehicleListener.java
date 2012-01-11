@@ -1,15 +1,16 @@
-package org.halvors.halvors.listener;
+package no.industrialnorge.industrialnorge.listener;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
 
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Vehicle;
 import org.bukkit.event.vehicle.VehicleUpdateEvent;
 import org.bukkit.util.Vector;
-import org.halvors.halvors.halvors;
 
 public class VehicleListener extends org.bukkit.event.vehicle.VehicleListener {
 //	private final halvors plugin;
 
-	public VehicleListener(halvors plugin) {
+	public VehicleListener(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 

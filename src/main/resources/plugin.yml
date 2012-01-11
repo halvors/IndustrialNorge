@@ -1,5 +1,5 @@
-name: halvors
-main: org.halvors.halvors.halvors
+name: IndustrialNorge
+main: no.industrialnorge.industrialnorge.IndustrialNorge
 version: 0.1
 description: 
 author: halvors
@@ -8,122 +8,56 @@ website: halvors.org
 commands:
     armor:
         aliases:
-        description:
-        usage:
+        description: Lar deg sette blokker og items på hodet.
+        usage: /<command>
 
-    bank:
-        aliases:
-        description:
-        usage:
-
-    ci:
-        aliases:
-        description:
-        usage:
-
-    help:
-        aliases: [hjelp]
-        description:
-        usage:
+    list:
+        aliases: [who]
+        description: Viser alle spillere på serveren.
+        usage: /<command>
 
     loc:
         aliases: [lok]
-        description:
-        usage:
-
-    maintenance:
-        aliases:
-        description:
-        usage:
-
-    setspawn:
-        aliases:
-        description:
-        usage:
-
-    spawn:
-        aliases:
-        description:
-        usage:
+        description: Viser din nåværende posisjon.
+        usage: /<command>
 
     stuck:
         aliases: [s]
-        description:
-        usage:
-
-    time:
-        aliases: [tid]
-        description:
-        usage:
+        description: Flytter deg til høyeste blokk i verden, nyttig om du er stuck inni en blokk.
+        usage: /<command>
 
 permissions:
-    halvors.*:
+    industrialnorge.*:
         default: op
         description:
         children:
-            halvors.group.*: true            
+            industrialnorge.group.*: true            
 
-            halvors.armor: true
-            halvors.ban: true
-            halvors.bank: true
-            halvors.ci: true
-            halvors.help: true
-            halvors.kick: true
-            halvors.maintenance: true
-            halvors.setspawn: true
-            halvors.spawn: true
-            halvors.stuck: true
-            halvors.time: true
-            halvors.tp: true
-            halvors.tphere: true 
+            industrialnorge.armor: true
+            industrialnorge.list: true
+            industrialnorge.loc: true
+            industrialnorge.stuck: true
     
-    halvors.armor:
-        description:    
-
-    halvors.ban:
+    industrialnorge.armor:
         description:
 
-    halvors.bank:
+    industrialnorge.list:
+        description: 
+        
+    industrialnorge.loc:
         description:
 
-    halvors.ci:
+    industrialnorge.stuck:
         description:
 
-    halvors.help:
-        description:
-
-    halvors.kick:
-        description:
-
-    halvors.maintenance:
-        description:
-
-    halvors.setspawn:
-        description:
-
-    halvors.spawn:
-        description:
-
-    halvors.stuck:
-        description:
-
-    halvors.time:
-        description:
-
-    halvors.tp:
-        description:
-
-    halvors.tphere: 
-        description:
-
-    halvors.group.*:
+    industrialnorge.group.*:
         description:
         children:
-            halvors.group.admin: true
-            halvors.group.mod: true
+            industrialnorge.group.admin: true
+            industrialnorge.group.mod: true
 
-    halvors.group.admin:
+    industrialnorge.group.admin:
         description:
 
-    halvors.group.mod:
+    industrialnorge.group.mod:
         description:

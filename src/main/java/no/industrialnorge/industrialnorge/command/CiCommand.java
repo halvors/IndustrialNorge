@@ -1,16 +1,17 @@
-package org.halvors.halvors.command;
+package no.industrialnorge.industrialnorge.command;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.halvors.halvors.halvors;
 
 public class CiCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public CiCommand(halvors plugin) {
+	public CiCommand(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 

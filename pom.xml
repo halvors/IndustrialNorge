@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.halvors</groupId>
-	<artifactId>halvors</artifactId>
+	<groupId>no.industrialnorge</groupId>
+	<artifactId>industrialnorge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>halvors</name>
+	<name>IndustrialNorge</name>
 	<description>.</description>
-	<url>https://github.com/halvors/LupiMap</url>
+	<url>https://github.com/halvors/IndustrialNorge</url>
 	<issueManagement>
 		<system>Github</system>
-		<url>https://github.com/halvors/Lupi/issues</url>
+		<url>https://github.com/halvors/IndustrialNorge/issues</url>
 	</issueManagement>
 	<scm>
-		<connection>scm:git:git://github.com/halvors/LupiMap.git</connection>
-		<developerConnection>scm:git:git@github.com:halvors/LupiMap.git</developerConnection>
-		<url>https://github.com/halvors/LupiMap</url>
+		<connection>scm:git:git://github.com/halvors/IndustrialNorge.git</connection>
+		<developerConnection>scm:git:git@github.com:halvors/IndustrialNorge.git</developerConnection>
+		<url>https://github.com/halvors/IndustrialNorge</url>
 	</scm>
 	<!-- Repository locations -->
 	<repositories>

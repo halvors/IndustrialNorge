@@ -1,4 +1,6 @@
-package org.halvors.halvors.command;
+package no.industrialnorge.industrialnorge.command;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -8,12 +10,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.halvors.halvors.halvors;
 
 public class StuckCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public StuckCommand(halvors plugin) {
+	public StuckCommand(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 	
@@ -28,19 +29,14 @@ public class StuckCommand implements CommandExecutor {
 				Environment env = world.getEnvironment();
 				Location newPos = null;
 				
-				switch (env) {
-				case NORMAL:
+				if (env.equals(Environment.NORMAL)) {
 					newPos = new Location(world, pos.getX(), world.getHighestBlockYAt(pos.getBlockX(), pos.getBlockZ()), pos.getZ());
-					break;
-				default:
+				} else {
 					sender.sendMessage(ChatColor.RED + "Denne kommandoen er ikke tilgjengelig i denne verden.");
-					break;
 				}
 				
 				if (world != null && newPos != null) {
 					player.teleport(newPos);
-				
-					return true;
 				}
 			}
 		}

@@ -1,17 +1,18 @@
-package org.halvors.halvors.command;
+package no.industrialnorge.industrialnorge.command;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
+import no.industrialnorge.industrialnorge.util.PlayerUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.halvors.halvors.halvors;
-import org.halvors.halvors.util.PlayerUtils;
 
 public class TphCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public TphCommand(halvors plugin) {
+	public TphCommand(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 	

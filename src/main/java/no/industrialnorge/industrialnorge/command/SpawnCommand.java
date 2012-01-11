@@ -1,4 +1,6 @@
-package org.halvors.halvors.command;
+package no.industrialnorge.industrialnorge.command;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
 
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -6,12 +8,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.halvors.halvors.halvors;
 
 public class SpawnCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public SpawnCommand(halvors plugin) {
+	public SpawnCommand(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 	
@@ -23,8 +24,8 @@ public class SpawnCommand implements CommandExecutor {
 			if (sender.hasPermission("halvors.spawn")) {
 				World world = player.getWorld();
 				
-				sender.sendMessage(ChatColor.YELLOW + "Woosh! Du ble sendt til spawn.");
 				player.teleport(world.getSpawnLocation());
+				sender.sendMessage(ChatColor.YELLOW + "Woosh! Du ble sendt til spawn.");
 				
 				return true;
 			}

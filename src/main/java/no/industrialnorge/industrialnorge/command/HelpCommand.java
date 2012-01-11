@@ -1,15 +1,16 @@
-package org.halvors.halvors.command;
+package no.industrialnorge.industrialnorge.command;
+
+import no.industrialnorge.industrialnorge.IndustrialNorge;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.halvors.halvors.halvors;
 
 public class HelpCommand implements CommandExecutor {
 //	private final halvors plugin;
 	
-	public HelpCommand(halvors plugin) {
+	public HelpCommand(IndustrialNorge plugin) {
 //		this.plugin = plugin;
 	}
 
@@ -17,7 +18,7 @@ public class HelpCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
 		if (sender.hasPermission("halvors.help")) {
 			if (args.length == 0) {
-				sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennå :(");
+				sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennï¿½ :(");
 				
 				return true;
 			}

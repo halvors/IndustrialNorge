@@ -1,4 +1,4 @@
-package org.halvors.halvors.util;
+package no.industrialnorge.industrialnorge.util;
 
 import org.bukkit.Material;
 
