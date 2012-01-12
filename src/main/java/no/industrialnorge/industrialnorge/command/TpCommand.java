@@ -22,7 +22,7 @@ public class TpCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 1) {
-				if (sender.hasPermission("halvors.tp")) {
+				if (sender.hasPermission("industrialnorge.tp")) {
 					Player target = PlayerUtils.getPlayer(args[0]);
 					
 					if (target != null) {

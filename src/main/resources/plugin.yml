@@ -11,14 +11,19 @@ commands:
         description: Lar deg sette blokker og items på hodet.
         usage: /<command>
 
-    list:
-        aliases: [who]
-        description: Viser alle spillere på serveren.
-        usage: /<command>
-
     loc:
         aliases: [lok]
         description: Viser din nåværende posisjon.
+        usage: /<command>
+
+    setspawn:
+        aliases:
+        description: Setter spawn i din nåværende verden.
+        usage: /<command>
+        
+    spawn:
+        aliases:
+        description: Teleporterer deg til din verdens spawn.
         usage: /<command>
 
     stuck:
@@ -34,18 +39,22 @@ permissions:
             industrialnorge.group.*: true            
 
             industrialnorge.armor: true
-            industrialnorge.list: true
             industrialnorge.loc: true
+            industrialnorge.setspawn: true
+            industrialnorge.spawn: true
             industrialnorge.stuck: true
     
     industrialnorge.armor:
         description:
-
-    industrialnorge.list:
-        description: 
         
     industrialnorge.loc:
         description:
+
+    industrialnorge.setspawn:
+        description: 
+        
+    industrialnorge.spawn:
+        description: 
 
     industrialnorge.stuck:
         description:

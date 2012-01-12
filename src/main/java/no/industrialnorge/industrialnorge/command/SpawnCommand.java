@@ -21,13 +21,15 @@ public class SpawnCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.spawn")) {
-				World world = player.getWorld();
+			if (sender.hasPermission("industrialnorge.spawn")) {
+				if (args.length == 0) {
+					World world = player.getWorld();
 				
-				player.teleport(world.getSpawnLocation());
-				sender.sendMessage(ChatColor.YELLOW + "Woosh! Du ble sendt til spawn.");
+					player.teleport(world.getSpawnLocation());
+					sender.sendMessage(ChatColor.YELLOW + "Woosh! Du ble sendt til spawn.");
 				
-				return true;
+					return true;
+				}
 			}
 		}
 		

@@ -1,8 +1,13 @@
 package no.industrialnorge.industrialnorge.command;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 
-import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,20 +30,24 @@ public class ListCommand implements CommandExecutor {
 					StringBuilder onlinePlayers = new StringBuilder();
 					onlinePlayers.append("Spillere pålogget: ");
 					
+					List<Player> players = Arrays.asList(plugin.getServer().getOnlinePlayers());
+					
 					boolean first = true;
 					
-					for (Player p : plugin.getServer().getOnlinePlayers()) {
+					for (Player p : players) {
 						if (!first) {
 							onlinePlayers.append(", ");
 						} else {
 							first = false;
 						}
 						
+						
+						
 						onlinePlayers.append(p.getDisplayName());
 					}
 
-					sender.sendMessage("Spiller på: " +  onlinePlayers);
-					sender.sendMessage("Spillere pålogget: " + plugin.getServer().getOnlinePlayers().length);
+					sender.sendMessage(onlinePlayers.toString());
+					sender.sendMessage("Antall spillere: " + ChatColor.YELLOW + plugin.getServer().getOnlinePlayers().length + ChatColor.WHITE + "/" + ChatColor.RED + plugin.getServer().getMaxPlayers());
 					
 					return true;
 				}

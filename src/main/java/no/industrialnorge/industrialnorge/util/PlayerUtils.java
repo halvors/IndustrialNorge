@@ -7,9 +7,9 @@ import org.bukkit.entity.Player;
 public class PlayerUtils {
 	public static void setDisplayName(Player player) {
 		if (player.hasPermission("industrialnorge.group.admin")) {
-			player.setDisplayName(ChatColor.GOLD + player.getName());
+			player.setDisplayName(ChatColor.GOLD + player.getName() + ChatColor.WHITE);
 		} else if (player.hasPermission("industrialnorge.group.mod")) {
-			player.setDisplayName(ChatColor.BLUE + player.getName());
+			player.setDisplayName(ChatColor.BLUE + player.getName() + ChatColor.WHITE);
 		}
 	}
 	

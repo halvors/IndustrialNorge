@@ -22,12 +22,12 @@ public class SetSpawnCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			
-			if (sender.hasPermission("halvors.setspawn")) {
+			if (sender.hasPermission("industrialnorge.setspawn")) {
 				if (args.length == 0) {
 					World world = player.getWorld();
 					Location loc = player.getLocation();
 				
-					sender.sendMessage(ChatColor.YELLOW + "Spawn er n� satt til: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockY() + ".");
+					sender.sendMessage(ChatColor.YELLOW + "Spawn er nå satt til: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockY() + ".");
 					
 					world.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 					

@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 
 import no.industrialnorge.industrialnorge.command.ArmorCommand;
 import no.industrialnorge.industrialnorge.command.LocCommand;
+import no.industrialnorge.industrialnorge.command.SetSpawnCommand;
+import no.industrialnorge.industrialnorge.command.SpawnCommand;
 import no.industrialnorge.industrialnorge.command.StuckCommand;
 import no.industrialnorge.industrialnorge.listener.PlayerListener;
 import no.industrialnorge.industrialnorge.listener.VehicleListener;
@@ -62,17 +64,11 @@ public class IndustrialNorge extends JavaPlugin {
 	
 	public void registerCommands() {
         getCommand("armor").setExecutor(new ArmorCommand(this));
-//		getCommand("ban").setExecutor(new BanCommand(this));
-//		getCommand("bank").setExecutor(new BankCommand(this));
-//		getCommand("ci").setExecutor(new CiCommand(this));
-//      getCommand("help").setExecutor(new HelpCommand(this));
-//		getCommand("kick").setExecutor(new KickCommand(this));
+//        getCommand("list").setExecutor(new ListCommand(this));
         getCommand("loc").setExecutor(new LocCommand(this));
-//		getCommand("maintenance").setExecutor(new MaintenanceCommand(this));
-//		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
-//		getCommand("spawn").setExecutor(new SpawnCommand(this));
+		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+		getCommand("spawn").setExecutor(new SpawnCommand(this));
 		getCommand("stuck").setExecutor(new StuckCommand(this));
-//		getCommand("time").setExecutor(new TimeCommand(this));
 	}
 
     /**
