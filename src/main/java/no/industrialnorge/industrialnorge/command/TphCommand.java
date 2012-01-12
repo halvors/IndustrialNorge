@@ -22,7 +22,7 @@ public class TphCommand implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 1) {
-				if (sender.hasPermission("halvors.tph")) {
+				if (sender.hasPermission("industrialnorge.tph")) {
 					Player target = PlayerUtils.getPlayer(args[0]);
 				
 					if (target != null) {

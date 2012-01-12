@@ -42,7 +42,7 @@ public class ArmorCommand implements CommandExecutor {
 					item.setAmount(newHelmet.getAmount() - 1);
 					
 					String itemName = type.toString().toString().toLowerCase();
-					sender.sendMessage(ChatColor.YELLOW + "Du har nå en " + itemName + " på hodet.");
+					sender.sendMessage("Du har nå en " + ChatColor.YELLOW + itemName + ChatColor.WHITE + " på hodet.");
 				} else {
 					sender.sendMessage(ChatColor.RED + "Dette er ikke en hatt.");
 				}

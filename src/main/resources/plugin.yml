@@ -1,9 +1,9 @@
 name: IndustrialNorge
 main: no.industrialnorge.industrialnorge.IndustrialNorge
-version: 0.1
-description: 
+version: 0.0.1
+description: Bukkit plugin for IndustrialNorge serveren.
 author: halvors
-website: halvors.org
+website: http://halvors.org/servere/minecraft/industialnorge
 
 commands:
     armor:
@@ -21,6 +21,20 @@ commands:
         description: Viser din nåværende posisjon.
         usage: /<command>
 
+    mods:
+        aliases
+        description: Viser en lite over moddene serveren kjører.
+        usage: /<command>
+	setspawn:
+        aliases:
+        description: Setter spawn for din nåværende verden.
+        usage: /<command>
+
+	spawn:
+        aliases:
+        description: Teleporterer deg til din verdens spawn.
+        usage: /<command>
+
     stuck:
         aliases: [s]
         description: Flytter deg til høyeste blokk i verden, nyttig om du er stuck inni en blokk.
@@ -34,8 +48,13 @@ permissions:
             industrialnorge.group.*: true            
 
             industrialnorge.armor: true
+            industrialnorge.ci: true
+            industrialnorge.ci.other: true
             industrialnorge.list: true
             industrialnorge.loc: true
+            industrialnorge.mods: true
+            industrialnorge.setspawn: true
+            industrialnorge.spawn: true
             industrialnorge.stuck: true
     
     industrialnorge.armor:
@@ -45,6 +64,15 @@ permissions:
         description: 
         
     industrialnorge.loc:
+        description:
+        
+    industrialnorge.mods:
+        description:
+
+    industrialnorge.setspawn:
+        description:
+        
+    industrialnorge.spawn:
         description:
 
     industrialnorge.stuck:

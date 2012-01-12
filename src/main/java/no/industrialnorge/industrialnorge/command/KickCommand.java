@@ -20,7 +20,7 @@ public class KickCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
 		if (args.length >= 1) {
-			if (sender.hasPermission("halvors.kick")) {
+			if (sender.hasPermission("industrialnorge.kick")) {
 				Player kickPlayer = PlayerUtils.getPlayer(args[1]);
 				String senderName = sender instanceof Player ? ((Player) sender).getDisplayName() : ChatColor.GOLD + "Console";
 				String kickReason = args.length > 1 ? args[3] : "The banhammar has spoken!";
