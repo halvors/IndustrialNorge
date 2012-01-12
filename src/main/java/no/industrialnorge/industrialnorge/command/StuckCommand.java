@@ -27,17 +27,23 @@ public class StuckCommand implements CommandExecutor {
 			if (player.hasPermission("industrialnorge.stuck")) {
 				Location pos = player.getLocation();
 				Environment env = world.getEnvironment();
+				Location newPos = null;
 				
 				if (env.equals(Environment.NORMAL)) {
-					Location newPos = new Location(world, pos.getX(), world.getHighestBlockYAt(pos.getBlockX(), pos.getBlockZ()), pos.getZ(), pos.getYaw(), pos.getPitch());
+					newPos = new Location(world, pos.getX(), world.getHighestBlockYAt(pos.getBlockX(), pos.getBlockZ()), pos.getZ(), pos.getYaw(), pos.getPitch());
 					player.teleport(newPos);
 					
-					return true;
 				} else {
 					sender.sendMessage(ChatColor.RED + "Denne kommandoen er ikke tilgjengelig i denne verden.");
 					
-					return true;
+					
 				}
+				
+				if (newPos != null) {
+					player.teleport(newPos);
+				}
+				
+				return true;
 			}
 		}
 		

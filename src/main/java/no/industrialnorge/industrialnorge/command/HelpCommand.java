@@ -17,11 +17,9 @@ public class HelpCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
 		if (sender.hasPermission("industrialnorge.help")) {
-			if (args.length == 0) {
-				sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennå :(");
+			sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennå :(");
 				
-				return true;
-			}
+			return true;
 		}
 		
 		return false;

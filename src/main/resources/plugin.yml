@@ -1,9 +1,9 @@
 name: IndustrialNorge
 main: no.industrialnorge.industrialnorge.IndustrialNorge
-version: 0.1
-description: 
+version: 0.0.1
+description: Bukkit plugin for IndustrialNorge serveren.
 author: halvors
-website: halvors.org
+website: http://halvors.org/servere/minecraft/industialnorge
 
 commands:
     armor:
@@ -11,16 +11,36 @@ commands:
         description: Lar deg sette blokker og items på hodet.
         usage: /<command>
 
+    ci:
+        aliases:
+        description: Fjerner alt i ditt inventory.
+        usage: /<command>
+
+    list:
+        aliases: [who]
+        description: Viser en liste med påloggede spillere.
+        usage: /<command>
+
     loc:
         aliases: [lok]
         description: Viser din nåværende posisjon.
         usage: /<command>
 
+    mods:
+        aliases:
+        description: Viser en lite over moddene serveren kjører.
+        usage: /<command>
+
+    msg:
+        aliases: [m]
+        description: Sender en privat melding til en annen spiller.
+        usage: /<command>
+
     setspawn:
         aliases:
-        description: Setter spawn i din nåværende verden.
+        description: Setter spawn for din nåværende verden.
         usage: /<command>
-        
+
     spawn:
         aliases:
         description: Teleporterer deg til din verdens spawn.
@@ -39,15 +59,35 @@ permissions:
             industrialnorge.group.*: true            
 
             industrialnorge.armor: true
+            industrialnorge.ci: true
+            industrialnorge.ci.others: true
+            industrialnorge.list: true
             industrialnorge.loc: true
+            industrialnorge.mods: true
+            industrialnorge.msg: true
             industrialnorge.setspawn: true
             industrialnorge.spawn: true
             industrialnorge.stuck: true
-    
+
     industrialnorge.armor:
+        description:
+    
+    industrialnorge.ci:
+        description:
+        
+    industrialnorge.ci.others:
+        description:
+    
+    industrialnorge.list:
         description:
         
     industrialnorge.loc:
+        description:
+        
+    industrialnorge.mods:
+        description:
+        
+    industrialnorge.msg:
         description:
 
     industrialnorge.setspawn:

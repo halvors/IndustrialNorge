@@ -30,6 +30,9 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
 		
+		// Update player's displayname.
+		PlayerUtils.setDisplayName(player);
+		
 		event.setQuitMessage(player.getDisplayName() + ChatColor.RED + " logget av.");
 	}
 	

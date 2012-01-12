@@ -1,12 +1,9 @@
 package no.industrialnorge.industrialnorge.command;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import no.industrialnorge.industrialnorge.IndustrialNorge;
+import no.industrialnorge.industrialnorge.util.PlayerUtils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,46 +11,39 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ListCommand implements CommandExecutor {
-	private final IndustrialNorge plugin;
+//	private final IndustrialNorge plugin;
 	
 	public ListCommand(IndustrialNorge plugin) {
-		this.plugin = plugin;
+//		this.plugin = plugin;
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
-		if (sender instanceof Player) {
-			Player player = (Player) sender;
-		
-			if (sender.hasPermission("industrialnorge.list")) {
-				if (args.length == 0) {
-					StringBuilder onlinePlayers = new StringBuilder();
-					onlinePlayers.append("Spillere pålogget: ");
+		if (sender.hasPermission("industrialnorge.list")) {
+			sender.sendMessage("Spillere pålogget: " + getPlayerList());
+			sender.sendMessage("Antall spillere: " + Bukkit.getOnlinePlayers().length + "/" + Bukkit.getMaxPlayers());
 					
-					List<Player> players = Arrays.asList(plugin.getServer().getOnlinePlayers());
-					
-					boolean first = true;
-					
-					for (Player p : players) {
-						if (!first) {
-							onlinePlayers.append(", ");
-						} else {
-							first = false;
-						}
-						
-						
-						
-						onlinePlayers.append(p.getDisplayName());
-					}
-
-					sender.sendMessage(onlinePlayers.toString());
-					sender.sendMessage("Antall spillere: " + ChatColor.YELLOW + plugin.getServer().getOnlinePlayers().length + ChatColor.WHITE + "/" + ChatColor.RED + plugin.getServer().getMaxPlayers());
-					
-					return true;
-				}
-			}
+			return true;
 		}
 		
 		return false;
+	}
+	
+	private String getPlayerList() {
+		StringBuilder playerList = new StringBuilder();
+
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			if (playerList.length() >= 1) {
+				playerList.append(ChatColor.WHITE);
+				playerList.append(", ");
+            }
+
+			// Update player's displayname.
+			PlayerUtils.setDisplayName(player);
+			
+			playerList.append(player.getDisplayName());
+		}
+
+		return playerList.toString();
 	}
 }

@@ -22,13 +22,11 @@ public class LocCommand implements CommandExecutor {
 			Player player = (Player) sender;
 		
 			if (sender.hasPermission("industrialnorge.loc")) {
-				if (args.length == 0) {
-					Location loc = player.getLocation();
+				Location loc = player.getLocation();
 					
-					sender.sendMessage(ChatColor.YELLOW + "Din nåværende posisjon er: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockZ() + ".");
-					
-					return true;
-				}
+				sender.sendMessage(ChatColor.YELLOW + "Din nåværende posisjon er: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockZ() + ".");
+				
+				return true;
 			}
 		}
 		

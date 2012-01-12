@@ -4,7 +4,7 @@
 	<artifactId>industrialnorge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>IndustrialNorge</name>
-	<description>.</description>
+	<description>Bukkit plugin for IndustrialNorge serveren.</description>
 	<url>https://github.com/halvors/IndustrialNorge</url>
 	<issueManagement>
 		<system>Github</system>
@@ -39,11 +39,20 @@
     <!-- Dependencies -->
     <dependencies>
     	<!-- CraftBukkit -->
+    	<dependency>
+                <groupId>org.bukkit</groupId>
+                <artifactId>craftbukkit</artifactId>
+                <version>1.0.1-R2-SNAPSHOT</version>
+                <scope>system</scope>
+                <systemPath>${basedir}/lib/craftbukkit.jar</systemPath>
+        </dependency>
+        <!--
         <dependency>
             <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>bukkit</artifactId>
+            <version>1.0.1-R2-SNAPSHOT</version>
         </dependency>
+        -->
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
