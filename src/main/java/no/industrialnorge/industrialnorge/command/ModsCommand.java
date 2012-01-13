@@ -4,14 +4,12 @@ import java.util.List;
 
 import net.minecraft.server.BaseMod;
 import net.minecraft.server.ModLoader;
-import net.minecraft.server.ModLoaderMp;
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class ModsCommand implements CommandExecutor {
 //	private final IndustrialNorge plugin;
@@ -31,7 +29,8 @@ public class ModsCommand implements CommandExecutor {
 		return false;
 	}
 
-    private String getModsList() {
+    @SuppressWarnings("unchecked")
+	private String getModsList() {
         StringBuilder modsList = new StringBuilder();
         List<BaseMod> mods = ModLoader.getLoadedMods();
 
