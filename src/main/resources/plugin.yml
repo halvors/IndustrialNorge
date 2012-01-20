@@ -31,11 +31,6 @@ commands:
         description: Viser en lite over moddene serveren kjører.
         usage: /<command>
 
-    msg:
-        aliases: [m]
-        description: Sender en privat melding til en annen spiller.
-        usage: /<command>
-
     setspawn:
         aliases:
         description: Setter spawn for din nåværende verden.
@@ -54,7 +49,7 @@ commands:
 permissions:
     industrialnorge.*:
         default: op
-        description:
+        description: 
         children:
             industrialnorge.group.*: true            
 
@@ -64,7 +59,6 @@ permissions:
             industrialnorge.list: true
             industrialnorge.loc: true
             industrialnorge.mods: true
-            industrialnorge.msg: true
             industrialnorge.setspawn: true
             industrialnorge.spawn: true
             industrialnorge.stuck: true
@@ -85,9 +79,6 @@ permissions:
         description:
         
     industrialnorge.mods:
-        description:
-        
-    industrialnorge.msg:
         description:
 
     industrialnorge.setspawn:

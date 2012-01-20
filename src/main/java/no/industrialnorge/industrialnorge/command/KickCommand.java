@@ -22,12 +22,19 @@ public class KickCommand implements CommandExecutor {
 		if (args.length >= 1) {
 			if (sender.hasPermission("industrialnorge.kick")) {
 				Player kickPlayer = PlayerUtils.getPlayer(args[1]);
-				String senderName = sender instanceof Player ? ((Player) sender).getDisplayName() : ChatColor.GOLD + "Console";
 				String kickReason = args.length > 1 ? args[3] : "The banhammar has spoken!";
+				String senderName = sender instanceof Player ? ((Player) sender).getDisplayName() : ChatColor.GOLD + "Console";
 				
-				Bukkit.getServer().broadcastMessage(ChatColor.YELLOW + kickPlayer.getDisplayName() + ChatColor.GREEN + " ble kicket for " + kickReason + " av " + senderName);
+				// Kick the player.
 				kickPlayer.kickPlayer(kickReason);
 				kickPlayer.getWorld().strikeLightningEffect(kickPlayer.getLocation());
+				
+				// And notify other players.
+				for (Player player : Bukkit.getOnlinePlayers()) {
+					if (player.hasPermission("industrialnorge.kick.notify")) {
+						player.sendMessage(kickPlayer.getDisplayName() + ChatColor.WHITE + " ble kicket for " + kickReason + " av " + senderName);
+					}
+				}
 					
 				return true;
 			}

@@ -27,8 +27,8 @@ public class TphCommand implements CommandExecutor {
 				
 					if (target != null) {
 						target.teleport(player.getLocation());
-						sender.sendMessage(ChatColor.GREEN + "Du teleporterte " + target.getDisplayName() + ChatColor.GREEN + " til deg.");
-						target.sendMessage(ChatColor.GREEN + "Du ble teleportert til " + player.getDisplayName() + ChatColor.GREEN + ".");
+						sender.sendMessage(ChatColor.WHITE + "Du teleporterte " + target.getDisplayName() + ChatColor.WHITE + " til deg.");
+						target.sendMessage(ChatColor.WHITE + "Du ble teleportert til " + player.getDisplayName() + ChatColor.WHITE + ".");
 					} else {
 						sender.sendMessage(ChatColor.RED + "Fant ikke brukeren du ville teleportere til.");
 					}
@@ -36,8 +36,6 @@ public class TphCommand implements CommandExecutor {
 					return true;
 				}
 			}
-			
-			return true;
 		}
 		
 		return false;

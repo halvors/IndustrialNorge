@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import no.industrialnorge.industrialnorge.command.ArmorCommand;
 import no.industrialnorge.industrialnorge.command.CiCommand;
+import no.industrialnorge.industrialnorge.command.KickCommand;
 import no.industrialnorge.industrialnorge.command.ListCommand;
 import no.industrialnorge.industrialnorge.command.LocCommand;
 import no.industrialnorge.industrialnorge.command.ModsCommand;

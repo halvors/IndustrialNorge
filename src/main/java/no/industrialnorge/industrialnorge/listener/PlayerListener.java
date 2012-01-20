@@ -2,6 +2,7 @@ package no.industrialnorge.industrialnorge.listener;
 
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 import no.industrialnorge.industrialnorge.util.PlayerUtils;
+import no.industrialnorge.industrialnorge.util.Utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,6 +20,11 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	@Override
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
+		
+//		// Display the Motd.
+//		if (player.hasPermission("industrialnorge.motd")) {
+//			player.sendMessage(Utils.getMotd());
+//		}
 		
 		// Update player's displayname.
 		PlayerUtils.setDisplayName(player);
