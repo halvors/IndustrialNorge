@@ -22,11 +22,11 @@ public class ModsCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
 		if (sender.hasPermission("industrialnorge.list")) {
 			sender.sendMessage("Mods: " + getModsList());
-				
-			return true;
+		} else {
+			sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 		}
 		
-		return false;
+		return true;
 	}
 
     @SuppressWarnings("unchecked")

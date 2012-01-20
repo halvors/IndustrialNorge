@@ -25,9 +25,11 @@ public class LocCommand implements CommandExecutor {
 				Location loc = player.getLocation();
 					
 				sender.sendMessage(ChatColor.YELLOW + "Din nåværende posisjon er: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockZ() + ".");
-				
-				return true;
+			} else {
+				sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;

@@ -30,10 +30,12 @@ public class SetSpawnCommand implements CommandExecutor {
 					sender.sendMessage(ChatColor.YELLOW + "Spawn er nå satt til: x: " + loc.getBlockX() + ", y: " + loc.getBlockY() + ", z: " + loc.getBlockY() + ".");
 					
 					world.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-					
-					return true;
 				}
+			} else {
+				sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;

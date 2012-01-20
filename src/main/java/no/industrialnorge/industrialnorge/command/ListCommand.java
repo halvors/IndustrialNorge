@@ -1,9 +1,5 @@
 package no.industrialnorge.industrialnorge.command;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 import no.industrialnorge.industrialnorge.util.PlayerUtils;
 
@@ -27,10 +23,11 @@ public class ListCommand implements CommandExecutor {
 			sender.sendMessage("Spillere pålogget: " + getPlayerList());
 			sender.sendMessage("Antall spillere: " + Bukkit.getOnlinePlayers().length + "/" + Bukkit.getMaxPlayers());
 					
-			return true;
+		} else {
+			sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 		}
 		
-		return false;
+		return true;
 	}
 	
 	private String getPlayerList() {

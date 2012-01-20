@@ -42,9 +42,11 @@ public class StuckCommand implements CommandExecutor {
 				if (newPos != null) {
 					player.teleport(newPos);
 				}
-				
-				return true;
+			} else {
+				sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;

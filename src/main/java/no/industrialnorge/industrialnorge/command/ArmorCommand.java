@@ -1,8 +1,5 @@
 package no.industrialnorge.industrialnorge.command;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 import no.industrialnorge.industrialnorge.util.ArmorUtils;
 
@@ -50,9 +47,11 @@ public class ArmorCommand implements CommandExecutor {
 				} else {
 					sender.sendMessage(ChatColor.RED + "Dette er ikke en hatt.");
 				}
-				
-				return true;
+			} else {
+				player.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;

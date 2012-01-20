@@ -28,9 +28,11 @@ public class KickCommand implements CommandExecutor {
 				Bukkit.getServer().broadcastMessage(target.getDisplayName() + ChatColor.YELLOW + " ble kicket for "+ ChatColor.WHITE + kickReason + ChatColor.YELLOW + " av " + senderName + ChatColor.WHITE + ".");
 				target.kickPlayer(kickReason);
 				target.getWorld().strikeLightningEffect(target.getLocation());
-					
-				return true;
+			} else {
+				sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;
