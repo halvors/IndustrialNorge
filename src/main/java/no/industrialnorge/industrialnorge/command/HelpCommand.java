@@ -18,10 +18,10 @@ public class HelpCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
 		if (sender.hasPermission("industrialnorge.help")) {
 			sender.sendMessage(ChatColor.YELLOW + "Ikke ferdig ennå :(");
-				
-			return true;
+		} else {
+			sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 		}
 		
-		return false;
+		return true;
 	}
 }

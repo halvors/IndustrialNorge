@@ -27,10 +27,12 @@ public class SpawnCommand implements CommandExecutor {
 				
 					player.teleport(world.getSpawnLocation());
 					sender.sendMessage(ChatColor.YELLOW + "Woosh! Du ble sendt til spawn.");
-				
-					return true;
 				}
+			} else {
+				sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;

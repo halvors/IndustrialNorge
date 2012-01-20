@@ -32,9 +32,11 @@ public class TphCommand implements CommandExecutor {
 					} else {
 						sender.sendMessage(ChatColor.RED + "Fant ikke brukeren du ville teleportere til.");
 					}
-				
-					return true;
+				} else {
+					sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 				}
+				
+				return true;
 			}
 		}
 		

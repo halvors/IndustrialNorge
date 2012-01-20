@@ -21,23 +21,31 @@ public class KickCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
 		if (args.length >= 1) {
 			if (sender.hasPermission("industrialnorge.kick")) {
-				Player kickPlayer = PlayerUtils.getPlayer(args[1]);
-				String kickReason = args.length > 1 ? args[3] : "The banhammar has spoken!";
+				Player target = PlayerUtils.getPlayer(args[1]);
 				String senderName = sender instanceof Player ? ((Player) sender).getDisplayName() : ChatColor.GOLD + "Console";
+				String kickReason = args.length > 1 ? args[3] : "The banhammar has spoken!";
 				
-				// Kick the player.
-				kickPlayer.kickPlayer(kickReason);
-				kickPlayer.getWorld().strikeLightningEffect(kickPlayer.getLocation());
+				if (target != null) {
+					// Kick the player.
+					target.kickPlayer(kickReason);
+					target.getWorld().strikeLightningEffect(target.getLocation());
 				
-				// And notify other players.
-				for (Player player : Bukkit.getOnlinePlayers()) {
-					if (player.hasPermission("industrialnorge.kick.notify")) {
-						player.sendMessage(kickPlayer.getDisplayName() + ChatColor.WHITE + " ble kicket for " + kickReason + " av " + senderName);
+					// And notify other players.
+					for (Player player : Bukkit.getOnlinePlayers()) {
+						if (player.hasPermission("industrialnorge.kick.notify")) {
+							player.sendMessage(target.getDisplayName() + ChatColor.WHITE + " ble kicket for " + kickReason + " av " + senderName);
+						}
 					}
+				} else {
+					// TODO: Legg til en for for feilmelding her.
 				}
 					
 				return true;
+			} else {
+				sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 			}
+			
+			return true;
 		}
 		
 		return false;

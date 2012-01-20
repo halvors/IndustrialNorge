@@ -23,10 +23,11 @@ public class ListCommand implements CommandExecutor {
 			sender.sendMessage("Spillere pålogget: " + getPlayerList());
 			sender.sendMessage("Antall spillere: " + Bukkit.getOnlinePlayers().length + "/" + Bukkit.getMaxPlayers());
 					
-			return true;
+		} else {
+			sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");
 		}
 		
-		return false;
+		return true;
 	}
 	
 	private String getPlayerList() {

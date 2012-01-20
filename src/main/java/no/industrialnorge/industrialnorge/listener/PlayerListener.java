@@ -2,7 +2,6 @@ package no.industrialnorge.industrialnorge.listener;
 
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 import no.industrialnorge.industrialnorge.util.PlayerUtils;
-import no.industrialnorge.industrialnorge.util.Utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -26,8 +25,9 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 //			player.sendMessage(Utils.getMotd());
 //		}
 		
-		// Update player's displayname.
+		// Update player's displayname and listname.
 		PlayerUtils.setDisplayName(player);
+		PlayerUtils.setPlayerListName(player);
 		
 		event.setJoinMessage(player.getDisplayName() + ChatColor.GREEN + " logget på.");
 	}
@@ -36,8 +36,9 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
 		
-		// Update player's displayname.
+		// Update player's displayname and listname.
 		PlayerUtils.setDisplayName(player);
+		PlayerUtils.setPlayerListName(player);
 		
 		event.setQuitMessage(player.getDisplayName() + ChatColor.RED + " logget av.");
 	}
