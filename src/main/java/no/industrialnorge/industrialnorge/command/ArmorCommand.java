@@ -1,5 +1,8 @@
 package no.industrialnorge.industrialnorge.command;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import no.industrialnorge.industrialnorge.IndustrialNorge;
 import no.industrialnorge.industrialnorge.util.ArmorUtils;
 
@@ -28,21 +31,22 @@ public class ArmorCommand implements CommandExecutor {
 				ItemStack item = player.getItemInHand();
 				Material type = item.getType();
 				
-				if (ArmorUtils.isAllowed(type)) {
+				if (ArmorUtils.isAllowed(type) || type.isBlock()) {
 					PlayerInventory inventory = player.getInventory();
 					ItemStack helmet = inventory.getHelmet();
 					
-					if (helmet.getAmount() > 0) {
-						inventory.setHelmet(null);
+					if (helmet.getAmount() != 0) {
 						inventory.addItem(new ItemStack(helmet.getType(), 1, helmet.getDurability()));
+						inventory.setHelmet(new ItemStack(null));
 					}
+					
+					item.setAmount(item.getAmount() - 1);
 					
 					ItemStack newHelmet = new ItemStack(type, 1, item.getDurability());
 					inventory.setHelmet(newHelmet);
-					item.setAmount(item.getAmount() - 1);
 					
-					String itemName = type.toString().toString().toLowerCase();
-					sender.sendMessage("Du har nå en " + ChatColor.YELLOW + itemName + ChatColor.WHITE + " på hodet.");
+					String itemName = type.toString().toLowerCase();
+					sender.sendMessage("Du har nå en " + itemName + " på hodet.");
 				} else {
 					sender.sendMessage(ChatColor.RED + "Dette er ikke en hatt.");
 				}

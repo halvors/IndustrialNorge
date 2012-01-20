@@ -20,8 +20,9 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		
-		// Update player's displayname.
+		// Update player's displayname and listname.
 		PlayerUtils.setDisplayName(player);
+		PlayerUtils.setPlayerListName(player);
 		
 		event.setJoinMessage(player.getDisplayName() + ChatColor.GREEN + " logget på.");
 	}
@@ -30,8 +31,9 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
 		
-		// Update player's displayname.
+		// Update player's displayname and listname.
 		PlayerUtils.setDisplayName(player);
+		PlayerUtils.setPlayerListName(player);
 		
 		event.setQuitMessage(player.getDisplayName() + ChatColor.RED + " logget av.");
 	}
