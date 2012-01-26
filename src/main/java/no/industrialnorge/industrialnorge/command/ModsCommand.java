@@ -20,7 +20,7 @@ public class ModsCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command commad, String label, String[] args) {
-		if (sender.hasPermission("industrialnorge.list")) {
+		if (sender.hasPermission("industrialnorge.mods")) {
 			sender.sendMessage("Mods: " + getModsList());
 		} else {
 			sender.sendMessage(ChatColor.RED + "Du har ikke rettigheter til å bruke denne kommandoen.");

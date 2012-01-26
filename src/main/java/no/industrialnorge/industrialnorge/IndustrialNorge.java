@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 
 import no.industrialnorge.industrialnorge.command.ArmorCommand;
 import no.industrialnorge.industrialnorge.command.CiCommand;
-import no.industrialnorge.industrialnorge.command.KickCommand;
 import no.industrialnorge.industrialnorge.command.ListCommand;
 import no.industrialnorge.industrialnorge.command.LocCommand;
 import no.industrialnorge.industrialnorge.command.ModsCommand;
@@ -46,7 +45,10 @@ public class IndustrialNorge extends JavaPlugin {
         pm = getServer().getPluginManager();
         desc = getDescription();
      
-
+        // Database
+//        sqlHandler.update("CREATE TABLE IF NOT EXISTS `users` (`id` int(6) NOT NULL AUTO_INCREMENT,`name` varchar(16) NOT NULL,`status` int(2) NOT NULL DEFAULT '0',`active` int(11) NOT NULL,`last_login` int(11) NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `name` (`name`)) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1");
+        
+        
         // Register our events.
         registerEvents();
 
